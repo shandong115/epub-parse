@@ -7,12 +7,11 @@ var fs = require("fs");
 
 http.createServer(function (request, response) {
 
-	// console.log('recept a connect')
     response.writeHead(200, {'Content-Type': 'text/plain'});
 
 	var params = url.parse(request.url, true).query;
 	var msg = 'I have received a file:'+params.fullname;
-	//console.log(msg)
+
     response.end(msg);
 	epub_deal(params.fullname,params.filename)
 }).listen(8888);
@@ -43,7 +42,7 @@ function epub_deal(fullname, file) {
 
 function insert_book(fileName, metadata) {
 	var connection = mysql.createConnection({
-		  host     : 'localhost',       
+		  host     : '192.168.31.42',       
 		  user     : 'dayou',              
 		  password : 'asdasd321321',       
 		  port: '3306',                   
